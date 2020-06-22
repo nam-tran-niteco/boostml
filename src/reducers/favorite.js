@@ -14,7 +14,7 @@ export const loadFavoriteImages = () => {
 
         const loadedImages = JSON.parse(localStorage.getItem('favorite'));
         if (loadedImages && loadedImages.length > 0) {
-            favoriteList = favoriteList.concat(loadedImages);
+            favoriteList = loadedImages;
         }
 
         dispatch(updateData({

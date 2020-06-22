@@ -14,18 +14,37 @@
   border: 1px solid #ccc;
 }
 
+.btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.favorite-bar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.favorite-bar .btn {
+  color: #fff;
+  background: #ccc;
+  border-radius: 2px;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
 .favorite {
   border: none;
   background-image: url('../../icons/e-commerce-like-heart.png');
+  background-color: transparent;
+  background-size: contain;
   height: 20px;
   width: 20px;
   position: absolute;
   top: 5px;
   left: 10px;
   display: block;
-  background-color: transparent;
-  background-size: contain;
-  cursor: pointer;
 }
 
 .favorite:focus {

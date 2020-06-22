@@ -13,7 +13,8 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.addFavorite.bind(this);
+        this.addFavorite = this.addFavorite.bind(this);
+        this.removeFavorite = this.removeFavorite.bind(this);
     }
 
     componentDidMount() {
@@ -53,6 +54,11 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div className="Dashboard">
+                <div className="favorite-bar">
+                    <Link to="/favorite" className="btn">
+                        Favorite Images
+                    </Link>
+                </div>
                 <div className="search-bar">
                     <DebounceInput placeholder="Search ..." minLength={0} debounceTimeout={300} onChange={this.handleChange} />
                 </div>
@@ -64,7 +70,7 @@ class Dashboard extends React.Component {
                             return (
                                 <div className="col-3" key={image.id}>
                                     <Link to={`/detail/${image.id}`}>
-                                        <button className={`favorite ${isFavorite ? 'active' : ''}`} onClick={(e) => isFavorite ? this.removeFavorite(image, e) : this.addFavorite(image, e)}></button>
+                                        <button className={`btn favorite ${isFavorite ? 'active' : ''}`} onClick={(e) => isFavorite ? this.removeFavorite(image, e) : this.addFavorite(image, e)}></button>
                                         <img src={image.previewURL} alt={image.user} />
                                     </Link>
                                 </div>

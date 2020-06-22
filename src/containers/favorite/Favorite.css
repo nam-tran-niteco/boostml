@@ -1,0 +1,27 @@
+.Favorite .back {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.favorite {
+  border: none;
+  background-image: url('../../icons/e-commerce-like-heart.png');
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  display: block;
+  background-color: transparent;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.favorite:focus {
+  border: none;
+  outline: none;
+}
+
+.favorite.active {
+  background-image: url('../../icons/heart.png');
+}
