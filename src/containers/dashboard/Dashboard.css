@@ -32,3 +32,7 @@
   border: none;
   outline: none;
 }
+
+.favorite.active {
+  background-image: url('../../icons/heart.png');
+}
