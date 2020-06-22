@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
+import { DebounceInput } from 'react-debounce-input';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-import { fetchImages } from '../../reducers/data';
+import { fetchImages, searchImages } from '../../reducers/data';
+import Loading from '../../components/loading';
 
 import './Dashboard.css';
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -18,28 +19,38 @@ class Dashboard extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        const searchTerm = event.target.value;
+        if (searchTerm) {
+            this.props.searchImages(searchTerm);
+        } else {
+            this.props.fetchImages();
+        }
+    }
     }
 
     render() {
         return (
             <div className="Dashboard">
                 {console.log(this.props.data)}
-                <div className="seach-bar">
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <div className="search-bar">
+                    <DebounceInput placeholder="Search ..." minLength={0} debounceTimeout={300} onChange={this.handleChange} />
                 </div>
-                {this.props}
-                <div className="row">
-                    {this.props.images?.hits.map((image) => {
-                        return (
-                            <div className="col-3" key={image.id}>
-                                <Link to={`/detail/${image.id}`}>
-                                    <img src={image.previewURL} alt={image.user} />
-                                </Link>
-                            </div>
-                        )
-                    })}
-                </div>
+                {this.props.data.loading
+                    ? <Loading />
+                    : <div className="row">
+                        {this.props.data.hits?.map((image) => {
+                            return (
+                                <div className="col-3" key={image.id}>
+                                    <Link to={`/detail/${image.id}`}>
+                                        <button className="favorite" onClick={(e) => this.handleClick(image.id, e)}></button>
+                                        <img src={image.previewURL} alt={image.user} />
+                                    </Link>
+                                </div>
+                            )
+                        })
+                        }
+                    </div>
+                }
             </div>
         );
     }
@@ -50,7 +61,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-    fetchImages
+    fetchImages,
+    searchImages
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

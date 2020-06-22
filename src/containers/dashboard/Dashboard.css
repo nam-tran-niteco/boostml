@@ -1,33 +1,34 @@
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.search-bar {
+  margin-bottom: 20px;
 }
 
-.row {
-  width: auto;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -5px;
+.search-bar input {
+  border: 1px solid #ccc;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0 20px;
+  color: #847979;
 }
 
-[class*="col-"] {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 5px;
-  padding-left: 5px;
-  flex-grow: 0;
-  flex-shrink: 0;
+.search-bar input:focus {
+  border: 1px solid #ccc;
 }
 
-.col-3 {
-  flex-basis: 23%;
-  max-width: 25%;
+.favorite {
+  border: none;
+  background-image: url('../../icons/e-commerce-like-heart.png');
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  display: block;
+  background-color: transparent;
+  background-size: contain;
+  cursor: pointer;
 }
 
-.col-3 img {
-  max-width: 100%;
+.favorite:focus {
+  border: none;
+  outline: none;
 }
-
-  
