@@ -1,0 +1,25 @@
+.Detail-image img {
+    max-width: 100%;
+}
+
+.Detail-image-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Detail-image-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Detail-image-info-item {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.Detail-image-info-item img {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
